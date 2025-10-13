@@ -38,3 +38,7 @@ docker cp "D:\GitHub Repositories\liquibase-demo\src\main\resources\db\changelog
 
 docker run --name mysql-container-8.0.43 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=mysql -p 3307:3306 -v "D:/GitHub Repositories/liquibase-demo/src/main/resources/db/changelog/changes/data":/var/lib/mysql-files -d mysql:8.0.43
 
+--
+using .sql file
+
+Caused by: com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Invalid JSON text: "Invalid value." at position 0 in value for column 'skill.skills'.
