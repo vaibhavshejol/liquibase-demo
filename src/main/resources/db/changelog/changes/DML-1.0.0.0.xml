@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <databaseChangeLog
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+		http://www.liquibase.org/xml/ns/pro  http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.24.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd">
 
     <!-- ChangeSet 2: Insert sample data -->
-    <changeSet id="2" author="admin">
+    <changeSet id="2" author="admin" failOnError="false">
         <!-- Insert Employees -->
         <insert tableName="employees">
             <column name="id" valueNumeric="1"/>
@@ -22,21 +26,26 @@
         </insert>
     </changeSet>
 
-    <changeSet id="3" author="admin">
-        <!-- Insert into skill table -->
-        <insert tableName="skill">
-            <column name="primary_skill" value="Java"/>
-            <column name="secondary_skill" value="Spring Boot"/>
-            <column name="skills" valueClobFile="data/John-Doe-skills.json"/>
-            <column name="employee_id" valueNumeric="1"/>
-        </insert>
+    <changeSet id="3" author="admin" failOnError="false">
+        <sql>
+            INSERT INTO skill (primary_skill, secondary_skill, skills, employee_id)
+            VALUES (
+            'Java',
+            'Spring Boot',
+            CONVERT(CAST(LOAD_FILE('/var/lib/mysql-files/John-Doe-skills.json') AS CHAR) USING utf8mb4),
+            1
+            );
+        </sql>
 
-        <insert tableName="skill">
-            <column name="primary_skill" value="JUnit"/>
-            <column name="secondary_skill" value="Test Cases"/>
-            <column name="skills" valueClobFile="data/Jane-Smith-skills.json"/>
-            <column name="employee_id" valueNumeric="2"/>
-        </insert>
+        <sql>
+            INSERT INTO skill (primary_skill, secondary_skill, skills, employee_id)
+            VALUES (
+            'JUnit',
+            'Test Cases',
+            CONVERT(CAST(LOAD_FILE('/var/lib/mysql-files/Jane-Smith-skills.json') AS CHAR) USING utf8mb4),
+            2
+            );
+        </sql>
     </changeSet>
 
 </databaseChangeLog>

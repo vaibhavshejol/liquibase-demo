@@ -1,0 +1,40 @@
+Liquibase Json file read issue:
+===============================
+
+Used Tools:
+=============
+Spring Boot: 3.2.5
+Liquibase Core: 4.27.0
+MySQL Connector: 8.2.0
+MySQL DBMS: 8.0.43
+
+JPA: 3.2.5
+
+
+Plugins:
+==============
+	id 'org.springframework.boot' version '3.2.5'
+
+
+Dependencies:
+==============
+	implementation 'org.liquibase:liquibase-core:4.27.0'
+	implementation 'com.mysql:mysql-connector-j:8.2.0'
+	implementation 'org.springframework.data:spring-data-jpa:3.2.5'
+
+Docker command:
+==============
+mysql -u root -p
+root
+
+mysql> SHOW VARIABLES LIKE 'secure_file_priv';
++------------------+-----------------------+
+| Variable_name    | Value                 |
++------------------+-----------------------+
+| secure_file_priv | /var/lib/mysql-files/ |
++------------------+-----------------------+
+
+docker cp "D:\GitHub Repositories\liquibase-demo\src\main\resources\db\changelog\changes\data\John-Doe-skills.json" mysql-container-8.0.43:/var/lib/mysql-files/John-Doe-skills.json
+
+docker run --name mysql-container-8.0.43 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=mysql -p 3307:3306 -v "D:/GitHub Repositories/liquibase-demo/src/main/resources/db/changelog/changes/data":/var/lib/mysql-files -d mysql:8.0.43
+
