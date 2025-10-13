@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- ChangeSet 1: Create employees table -->
+    <changeSet id="1" author="admin">
+        <createTable tableName="employees">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="firstname" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lastname" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(100)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="skill">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="primary_skill" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="secondary_skill" type="VARCHAR(100)"/>
+            <column name="skills" type="json">
+                <constraints nullable="false"/>
+            </column>
+            <column name="employee_id" type="INT">
+                <constraints nullable="false" foreignKeyName="fk_employee_address"
+                             references="employees(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

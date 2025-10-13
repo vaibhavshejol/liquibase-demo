@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- ChangeSet 2: Insert sample data -->
+    <changeSet id="2" author="admin">
+        <!-- Insert Employees -->
+        <insert tableName="employees">
+            <column name="id" valueNumeric="1"/>
+            <column name="firstname" value="John"/>
+            <column name="lastname" value="Doe"/>
+            <column name="email" value="john.doe@example.com"/>
+        </insert>
+
+        <insert tableName="employees">
+            <column name="id" valueNumeric="2"/>
+            <column name="firstname" value="Jane"/>
+            <column name="lastname" value="Smith"/>
+            <column name="email" value="jane.smith@example.com"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="3" author="admin">
+        <!-- Insert into skill table -->
+        <insert tableName="skill">
+            <column name="primary_skill" value="Java"/>
+            <column name="secondary_skill" value="Spring Boot"/>
+            <column name="skills" valueClobFile="data/John-Doe-skills.json"/>
+            <column name="employee_id" valueNumeric="1"/>
+        </insert>
+
+        <insert tableName="skill">
+            <column name="primary_skill" value="JUnit"/>
+            <column name="secondary_skill" value="Test Cases"/>
+            <column name="skills" valueClobFile="data/Jane-Smith-skills.json"/>
+            <column name="employee_id" valueNumeric="2"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
