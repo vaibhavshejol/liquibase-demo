@@ -33,7 +33,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="secondary_skill" type="VARCHAR(100)"/>
-            <column name="skills" type="json">
+            <column name="skills" type="text">
                 <constraints nullable="false"/>
             </column>
             <column name="employee_id" type="INT">

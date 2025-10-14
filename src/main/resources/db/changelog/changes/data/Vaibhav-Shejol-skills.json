@@ -1,0 +1,7 @@
+{
+  "Department": "Developer",
+  "skills-set": {
+    "primary-skill": "Java",
+    "secondary-skill": "Spring Boot"
+  }
+}
