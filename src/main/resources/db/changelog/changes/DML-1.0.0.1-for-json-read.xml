@@ -8,37 +8,20 @@
 		http://www.liquibase.org/xml/ns/pro  http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.24.xsd
         http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd">
 
-    <changeSet id="4" author="admin" failOnError="false">
+    <changeSet id="3" author="admin" failOnError="false">
         <preConditions onFail="MARK_RAN">
             <and>
-                <tableExists tableName="skill"/>
-                <tableIsEmpty tableName="skill"/>
+                <tableExists tableName="employees"/>
+                <tableIsEmpty tableName="employees"/>
             </and>
         </preConditions>
         <!-- Insert into skill table -->
-        <customChange class="com.bnt.liquibasedemo.custom.StreamJsonFileInsertChange">
-            <param name="tableName" value="skill"/>
-            <param name="idColumn" value="id"/>
-            <param name="idValue" value="1"/>
-            <param name="employeeIdColumn" value="employee_id"/>
-            <param name="employeeIdValue" value="1"/>
-            <param name="primarySkill" value="Java"/>
-            <param name="secondarySkill" value="Spring Boot"/>
-            <param name="jsonColumn" value="skills"/>
-            <param name="jsonFilePath" value="db/changelog/changes/data/Jane-Smith-skills.json"/>
-            <param name="employeeIdColumn" value="employee_id"/>
-            <param name="employeeIdValue" value="1"/>
-        </customChange>
-        <customChange class="com.bnt.liquibasedemo.custom.StreamJsonFileInsertChange">
-            <param name="tableName" value="skill"/>
-            <param name="idColumn" value="id"/>
-            <param name="idValue" value="2"/>
-            <param name="primarySkill" value="Java"/>
-            <param name="secondarySkill" value="Spring Boot"/>
-            <param name="jsonColumn" value="skills"/>
-            <param name="jsonFilePath" value="db/changelog/changes/data/John-Doe-skills.json"/>
-            <param name="employeeIdColumn" value="employee_id"/>
-            <param name="employeeIdValue" value="2"/>
+        <customChange class="com.bnt.liquibasedemo.custom.LoadEmployeeData">
+            <param name="id" value="1"/>
+            <param name="firstname" value="John"/>
+            <param name="lastname" value="Doe"/>
+            <param name="email" value="john.doe@example.com"/>
+            <param name="skills" value="db/changelog/changes/data/John-Doe-skills.json"/>
         </customChange>
     </changeSet>
 

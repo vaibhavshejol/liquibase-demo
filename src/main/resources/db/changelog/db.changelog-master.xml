@@ -10,6 +10,6 @@
 
     <include file="db/changelog/changes/DDL-1.0.0.0.xml" relativeToChangelogFile="false"/>
     <include file="db/changelog/changes/DML-1.0.0.0.xml" relativeToChangelogFile="false"/>
-<!--    <include file="db/changelog/changes/DML-1.0.0.1-for-json-read.xml" relativeToChangelogFile="false"/>-->
+    <include file="db/changelog/changes/DML-1.0.0.1-for-json-read.xml" relativeToChangelogFile="false"/>
 
 </databaseChangeLog>
