@@ -28,28 +28,19 @@
 
     <changeSet id="3" author="admin" failOnError="false">
         <!-- Insert into skill table -->
-        <customChange class="com.bnt.liquibasedemo.custom.StreamJsonFileInsertChange">
-            <param name="tableName" value="skill"/>
-            <param name="idColumn" value="id"/>
-            <param name="idValue" value="1"/>
-            <param name="primarySkill" value="Java"/>
-            <param name="secondarySkill" value="Spring Boot"/>
-            <param name="jsonColumn" value="skills"/>
-            <param name="jsonFilePath" value="db/changelog/changes/data/Jane-Smith-skills.json"/>
-            <param name="employeeIdColumn" value="employee_id"/>
-            <param name="employeeIdValue" value="1"/>
-        </customChange>
-        <customChange class="com.bnt.liquibasedemo.custom.StreamJsonFileInsertChange">
-            <param name="tableName" value="skill"/>
-            <param name="idColumn" value="id"/>
-            <param name="idValue" value="2"/>
-            <param name="primarySkill" value="Java"/>
-            <param name="secondarySkill" value="Spring Boot"/>
-            <param name="jsonColumn" value="skills"/>
-            <param name="jsonFilePath" value="db/changelog/changes/data/John-Doe-skills.json"/>
-            <param name="employeeIdColumn" value="employee_id"/>
-            <param name="employeeIdValue" value="2"/>
-        </customChange>
+        <insert tableName="skill">
+            <column name="primary_skill" value="Java"/>
+            <column name="secondary_skill" value="Spring Boot"/>
+            <column name="skills" valueClobFile="data/John-Doe-skills.json"/>
+            <column name="employee_id" valueNumeric="1"/>
+        </insert>
+
+        <insert tableName="skill">
+            <column name="primary_skill" value="JUnit"/>
+            <column name="secondary_skill" value="Test Cases"/>
+            <column name="skills" valueClobFile="data/Jane-Smith-skills.json"/>
+            <column name="employee_id" valueNumeric="2"/>
+        </insert>
     </changeSet>
 
 </databaseChangeLog>
