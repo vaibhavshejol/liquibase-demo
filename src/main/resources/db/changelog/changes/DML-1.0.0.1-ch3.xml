@@ -8,9 +8,12 @@
 		http://www.liquibase.org/xml/ns/pro  http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.24.xsd
         http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd">
 
-    <include file="db/changelog/changes/DDL-1.0.0.0-ch1.xml" relativeToChangelogFile="false"/>
-    <include file="db/changelog/changes/DML-1.0.0.0-ch2.xml" relativeToChangelogFile="false"/>
-    <include file="db/changelog/changes/DML-1.0.0.2-ch4.xml" relativeToChangelogFile="false"/>
-    <include file="db/changelog/changes/DML-1.0.0.1-ch3.xml" relativeToChangelogFile="false"/>
+    <!-- ChangeSet 3: Update existing data -->
+    <changeSet id="3" author="admin" failOnError="false">
+        <update tableName="employees">
+            <column name="skills" valueClobFile="data/John-Doe-skills-updated.json"/>
+            <where>id = 1</where>
+        </update>
+    </changeSet>
 
 </databaseChangeLog>
