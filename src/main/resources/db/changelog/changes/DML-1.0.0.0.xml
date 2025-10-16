@@ -31,14 +31,14 @@
         <insert tableName="skill">
             <column name="primary_skill" value="Java"/>
             <column name="secondary_skill" value="Spring Boot"/>
-            <column name="skills" valueClobFile="data/John-Doe-skills.json"/>
+            <column name="skills" valueBlobFile="data/ISO8583.xml"/>
             <column name="employee_id" valueNumeric="1"/>
         </insert>
 
         <insert tableName="skill">
             <column name="primary_skill" value="JUnit"/>
             <column name="secondary_skill" value="Test Cases"/>
-            <column name="skills" valueClobFile="data/Jane-Smith-skills.json"/>
+            <column name="skills" valueBlobFile="data/ISO8583.xml"/>
             <column name="employee_id" valueNumeric="2"/>
         </insert>
     </changeSet>
