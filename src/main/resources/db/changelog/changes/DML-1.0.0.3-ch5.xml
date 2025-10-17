@@ -16,7 +16,8 @@
 <!--            </and>-->
 <!--        </preConditions>-->
         <!-- Insert into skill table -->
-        <customChange class="com.bnt.liquibasedemo.custom.LoadEmployeeData">
+        <customChange class="com.bnt.liquibasedemo.custom.UpdateEmployeeData">
+            <param name="operationType" value="update"/>
             <param name="id" value="1"/>
             <param name="firstname" value="John"/>
             <param name="lastname" value="Doe"/>
