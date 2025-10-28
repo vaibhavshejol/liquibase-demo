@@ -1,0 +1,13 @@
+id,firstname,lastname,email,skills
+1,John,Doe,john.doe@example.com,"{""primarySkill"": ""Java"", ""secondarySkill"": ""Spring Boot""}"
+2,Jane,Smith,jane.smith@example.com,"{""primarySkill"": ""React"", ""secondarySkill"": ""Node.js""}"
+3,Vaibhav,Shejol,vaibhav.shejol@example.com,"{
+                                               ""Department"": ""Developer"",
+                                               ""skills-set"": {
+                                                 ""primary-skill"": ""Java"",
+                                                 ""secondary-skill"": ""Spring Boot"",
+                                                 ""additional"": ""Docker""
+                                               },
+                                               ""persistent"": true,
+                                               ""pattern"":""(?<=\\w{2}).(?=[^.]*?\\w{2})""
+                                             }"

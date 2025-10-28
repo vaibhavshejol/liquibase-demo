@@ -19,4 +19,17 @@
         </insert>
     </changeSet>
 
+    <changeSet id="3" author="admin">
+        <loadData
+                file="db/changelog/changes/data/Employees.csv"
+                separator=","
+                tableName="employees">
+            <column name="id" type="NUMERIC"/>
+            <column name="firstname" type="STRING"/>
+            <column name="lastname" type="STRING"/>
+            <column name="email" type="STRING"/>
+            <column name="skills" type="JSON"/>
+        </loadData>
+    </changeSet>
+
 </databaseChangeLog>
