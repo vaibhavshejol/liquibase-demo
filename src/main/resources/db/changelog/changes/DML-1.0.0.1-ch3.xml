@@ -8,12 +8,22 @@
 		http://www.liquibase.org/xml/ns/pro  http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.24.xsd
         http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd">
 
+    <!-- ChangeSet 3.0: Change type to fix read and store json data -->
+    <changeSet id="3.0" author="admin" failOnError="false">
+        <modifyDataType tableName="employees" columnName="skills" newDataType="text"/>
+    </changeSet>
+    
     <!-- ChangeSet 3: Update existing data -->
     <changeSet id="3" author="admin" failOnError="false">
         <update tableName="employees">
             <column name="skills" valueClobFile="data/John-Doe-skills-updated.json"/>
             <where>id = 1</where>
         </update>
+    </changeSet>
+
+    <!-- ChangeSet 3.1: Change type to fix read and store json data -->
+    <changeSet id="3.1" author="admin" failOnError="false">
+        <modifyDataType tableName="employees" columnName="skills" newDataType="json"/>
     </changeSet>
 
 </databaseChangeLog>
