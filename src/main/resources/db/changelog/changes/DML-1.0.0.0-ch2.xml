@@ -10,6 +10,7 @@
 
     <changeSet id="2.0" author="admin" failOnError="false">
         <modifyDataType tableName="employees" columnName="skills" newDataType="MEDIUMTEXT"/>
+        <addNotNullConstraint tableName="employees" columnName="skills" columnDataType="MEDIUMTEXT"/>
     </changeSet>
 
     <changeSet id="2" author="admin" failOnError="false">

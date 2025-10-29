@@ -17,6 +17,7 @@
 
     <changeSet id="3.1" author="admin" failOnError="false">
         <modifyDataType tableName="employees" columnName="skills" newDataType="json"/>
+        <addNotNullConstraint tableName="employees" columnName="skills" columnDataType="json"/>
     </changeSet>
 
 </databaseChangeLog>
