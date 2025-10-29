@@ -10,9 +10,6 @@
 
     <include file="db/changelog/changes/DDL-1.0.0.0-ch1.xml" relativeToChangelogFile="false"/>
     <include file="db/changelog/changes/DML-1.0.0.0-ch2.xml" relativeToChangelogFile="false"/>
-<!--    <include file="db/changelog/changes/DML-1.0.0.2-ch4.xml" relativeToChangelogFile="false"/>-->
     <include file="db/changelog/changes/DML-1.0.0.1-ch3.xml" relativeToChangelogFile="false"/>
-<!--    <include file="db/changelog/changes/DML-1.0.0.3-ch5.xml" relativeToChangelogFile="false"/>-->
-<!--    <include file="db/changelog/changes/DML-1.0.0.4-ch6.xml" relativeToChangelogFile="false"/>-->
 
 </databaseChangeLog>

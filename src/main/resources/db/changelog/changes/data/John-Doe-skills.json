@@ -2,8 +2,7 @@
   "Department": "Developer",
   "skills-set": {
     "primary-skill": "Java",
-    "secondary-skill": "Spring Boot",
-    "additional": "Docker"
+    "secondary-skill": "Spring Boot"
   },
   "persistent": true,
   "pattern":"(?<=\\w{2}).(?=[^.]*?\\w{2})"
